@@ -1,4 +1,4 @@
-module Prelude.Functor where
+module RPrelude.Functor where
 
   record Functor (F : Set → Set) : Set₁ where
     infixl 4 _<$>_
