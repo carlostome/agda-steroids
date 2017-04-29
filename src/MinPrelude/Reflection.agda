@@ -1,9 +1,7 @@
-open import RPrelude.Functor
-open import RPrelude.Monad
-open import RPrelude.Applicative
+open import MinPrelude
 open import Reflection
 
-module RPrelude.Reflection where
+module MinPrelude.Reflection where
 
   instance
     TCFunctor : Functor TC
@@ -23,3 +21,13 @@ module RPrelude.Reflection where
   instance
     ArgFunctor : Functor Arg
     Functor.fmap ArgFunctor f (arg i x) = arg i (f x)
+
+  instance
+    ArgFoldable : Foldable Arg
+    Foldable.foldMap ArgFoldable f (arg i x) = f x
+
+  instance
+    ArgTraversable : Traversable Arg
+    Traversable.traverse ArgTraversable f (arg i x) = (arg i) <$> f x
+    Traversable.superFunc ArgTraversable = ArgFunctor
+    Traversable.superFold ArgTraversable = ArgFoldable

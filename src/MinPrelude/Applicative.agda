@@ -1,6 +1,6 @@
-open import RPrelude.Functor
+open import MinPrelude.Functor
 
-module RPrelude.Applicative where
+module MinPrelude.Applicative where
 
   record Applicative (F : Set → Set) : Set₁ where
     infixl 4 _<*>_

@@ -1,3 +1,3 @@
-name: reflection-prelude
+name: agda-min-prelude
 depend: standard-library
 include: src

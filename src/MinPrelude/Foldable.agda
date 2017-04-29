@@ -1,7 +1,7 @@
-open import RPrelude.Monoid
-open import RPrelude.Functor
+open import MinPrelude.Monoid
+open import MinPrelude.Functor
 
-module RPrelude.Foldable where
+module MinPrelude.Foldable where
 
   record Foldable (F : Set → Set) : Set₁ where
     field

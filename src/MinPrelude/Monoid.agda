@@ -1,4 +1,4 @@
-module RPrelude.Monoid where
+module MinPrelude.Monoid where
 
   record Monoid (M : Set) : Set where
     field

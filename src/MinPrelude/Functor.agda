@@ -1,4 +1,4 @@
-module RPrelude.Functor where
+module MinPrelude.Functor where
 
   record Functor (F : Set → Set) : Set₁ where
     infixl 4 _<$>_
