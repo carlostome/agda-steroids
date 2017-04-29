@@ -8,3 +8,7 @@ module MinPrelude where
 
   open import MinPrelude.List        public
   open import MinPrelude.Maybe       public
+
+  open import MinPrelude.Show        public
+
+  open import MinPrelude.Nat         public

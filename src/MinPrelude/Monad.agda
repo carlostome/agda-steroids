@@ -49,3 +49,5 @@ module MinPrelude.Monad where
   foldlM : ∀ {A B : Set} {M : Set → Set} {{_ : Monad M}} → (B → A → M B) → B → List A → M B
   foldlM f acc l = foldl (λ mb m → mb >>= (λ b → f b m) ) (return acc) l
 
+  sequence : ∀ {A : Set} {M : Set → Set} {{_ : Monad M}} → List (M A) → M (List A)
+  sequence = mapM id

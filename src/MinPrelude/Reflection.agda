@@ -1,3 +1,4 @@
+open import Data.String
 open import MinPrelude
 open import Reflection
 
@@ -31,3 +32,22 @@ module MinPrelude.Reflection where
     Traversable.traverse ArgTraversable f (arg i x) = (arg i) <$> f x
     Traversable.superFunc ArgTraversable = ArgFunctor
     Traversable.superFold ArgTraversable = ArgFoldable
+
+  instance
+    ShowVisibility : Show Visibility
+    Show.show′ ShowVisibility visible   = "v"
+    Show.show′ ShowVisibility hidden    = "h"
+    Show.show′ ShowVisibility instance′ = "i"
+
+  instance
+    ShowRelevance : Show Relevance
+    Show.show′ ShowRelevance relevant   = "rr"
+    Show.show′ ShowRelevance irrelevant = "ir"
+
+  instance
+    ShowArg-info : Show Arg-info
+    Show.show′ ShowArg-info (arg-info v r) = "arg-info " ++ " " ++ show′ v ++ " " ++ show′ r
+
+  instance
+    ShowArg : ∀ {A : Set} {{_ : Show A}} → Show (Arg A)
+    Show.show′ ShowArg (arg i x) = "arg " ++ " " ++ show′ i ++ " " ++ show′ x 
