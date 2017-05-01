@@ -1,17 +1,18 @@
+open import Level
 open import Function               using (case_of_; id)
 open import Data.List              using (List; []; _∷_; foldl)
-open import MinPrelude.Functor
-open import MinPrelude.Applicative
+open import Steroids.Functor
+open import Steroids.Applicative
 
-module MinPrelude.Monad where
+module Steroids.Monad where
 
-  record Monad (M : Set → Set) : Set₁ where
+  record Monad {α} {β} (M : Set α → Set β) : Set (suc α ⊔ β) where
     infixl 4 _>>=_
     field
-      _>>=_ : ∀ {A B : Set} → M A → (A → M B) → M B
+      _>>=_ : ∀ {A B} → M A → (A → M B) → M B
       overlap {{super}} : Applicative M
 
-    _>>_ : ∀ {A B : Set} → M A → M B → M B
+    _>>_ : ∀ {A B} → M A → M B → M B
     m >> m₁ = m >>= λ _ → m₁
 
   open Monad {{...}} public

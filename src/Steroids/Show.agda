@@ -1,6 +1,6 @@
 open import Data.String
 
-module MinPrelude.Show where
+module Steroids.Show where
 
   record Show (A : Set) : Set where
     field

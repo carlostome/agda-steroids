@@ -1,10 +1,17 @@
 open import Data.Maybe using (Maybe; just; nothing)
 open import Data.List
 open import Data.Nat
+open import Data.Bool
 open import Data.String as String using (String)
-open import MinPrelude.Show
+open import Steroids.Show
+open import Steroids.Functor
 
-module MinPrelude.List where
+module Steroids.List where
+
+  instance
+    ListFunctor : ∀ {α} → Functor {α} List
+    Functor.fmap ListFunctor f [] = []
+    Functor.fmap ListFunctor f (x ∷ xs) = f x ∷ fmap f xs
 
   lookup : ∀ {A : Set} → ℕ → List A → Maybe A
   lookup n [] = nothing
@@ -13,7 +20,7 @@ module MinPrelude.List where
 
   showList : ∀ {A : Set} {{ _ : Show A}} → List A → String
   showList [] = "[]"
-  showList (x ∷ xs) = concatString ("[" ∷ show′ x ∷ "," ∷ [] ++ intersperse "," (map show′ xs) ++ [ "]" ])
+  showList (x ∷ xs) = concatString ("[" ∷ show′ x ∷ "," ∷ [] ++ (if not (null xs) then (intersperse "," (map show′ xs)) else [ "" ]) ++ [ "]" ])
     where
       concatString : List String → String
       concatString = foldl String._++_ ""

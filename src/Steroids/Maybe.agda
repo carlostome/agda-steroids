@@ -1,26 +1,27 @@
+open import Level
 open import Data.Maybe  using (Maybe; just; nothing)
 open import Data.List   using (List; _∷_; [])
 
-open import MinPrelude.Functor
-open import MinPrelude.Applicative
-open import MinPrelude.Monad
+open import Steroids.Functor
+open import Steroids.Applicative
+open import Steroids.Monad
 
-module MinPrelude.Maybe where
+module Steroids.Maybe where
 
   instance
-    MaybeFunctor : Functor Maybe
+    MaybeFunctor : ∀ {α} → Functor {α} Maybe
     Functor.fmap MaybeFunctor f (just x) = just (f x)
     Functor.fmap MaybeFunctor f nothing  = nothing
 
   instance
-    MaybeApp : Applicative Maybe
+    MaybeApp : ∀ {α} → Applicative {α} Maybe
     Applicative.pure MaybeApp  = just
     Applicative._<*>_ MaybeApp (just f) m = fmap f m
     Applicative._<*>_ MaybeApp nothing  m = nothing
     Applicative.super MaybeApp = MaybeFunctor
 
   instance
-    MaybeMonad : Monad Maybe
+    MaybeMonad : ∀ {α} → Monad {α} Maybe
     Monad._>>=_ MaybeMonad (just x) f = f x
     Monad._>>=_ MaybeMonad nothing  f = nothing
     Monad.super MaybeMonad = MaybeApp

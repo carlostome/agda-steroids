@@ -1,8 +1,8 @@
 open import Data.Nat
 open import Data.Nat.Show
-open import MinPrelude.Show
+open import Steroids.Show
 
-module MinPrelude.Nat where
+module Steroids.Nat where
 
   instance
     ShowNat : Show ℕ

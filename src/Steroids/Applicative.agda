@@ -1,12 +1,13 @@
-open import MinPrelude.Functor
+open import Level
+open import Steroids.Functor
 
-module MinPrelude.Applicative where
+module Steroids.Applicative where
 
-  record Applicative (F : Set → Set) : Set₁ where
+  record Applicative {α β} (F : Set α → Set β) : Set (suc α ⊔ β) where
     infixl 4 _<*>_
     field
-      pure  : ∀ {A : Set}   → A → F A
-      _<*>_ : ∀ {A B : Set} → F (A → B) → F A → F B
+      pure  : ∀ {A}   → A → F A
+      _<*>_ : ∀ {A B} → F (A → B) → F A → F B
       overlap {{super}} : Functor F
 
   open Applicative {{...}} public

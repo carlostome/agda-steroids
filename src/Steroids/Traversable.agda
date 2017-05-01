@@ -1,8 +1,8 @@
-open import MinPrelude.Applicative
-open import MinPrelude.Functor
-open import MinPrelude.Foldable
+open import Steroids.Applicative
+open import Steroids.Functor
+open import Steroids.Foldable
 
-module MinPrelude.Traversable where
+module Steroids.Traversable where
 
   record Traversable (T : Set → Set) : Set₁ where
     field

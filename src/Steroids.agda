@@ -1,14 +1,17 @@
-module MinPrelude where
+module Steroids where
 
-  open import MinPrelude.Functor     public
-  open import MinPrelude.Applicative public
-  open import MinPrelude.Monad       public
-  open import MinPrelude.Foldable    public
-  open import MinPrelude.Traversable public
+  open import Steroids.Functor     public
+  open import Steroids.Applicative public
+  open import Steroids.Alternative public
+  open import Steroids.Monad       public
+  open import Steroids.MonadPlus   public
+  open import Steroids.Foldable    public
+  open import Steroids.Traversable public
 
-  open import MinPrelude.List        public
-  open import MinPrelude.Maybe       public
+  open import Steroids.List        public
+  open import Steroids.Maybe       public
 
-  open import MinPrelude.Show        public
+  open import Steroids.Show        public
 
-  open import MinPrelude.Nat         public
+  open import Steroids.Nat         public
+  open import Steroids.String      public

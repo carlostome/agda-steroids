@@ -1,9 +1,11 @@
-module MinPrelude.Functor where
+open import Level
 
-  record Functor (F : Set → Set) : Set₁ where
+module Steroids.Functor where
+
+  record Functor {α β} (F : Set α → Set β) : Set (suc α ⊔ β)  where
     infixl 4 _<$>_
     field
-      fmap : ∀ {A B : Set} → (A → B) → F A → F B
+      fmap : ∀ {A B} → (f : A → B) → F A → F B
     _<$>_ = fmap
 
   open Functor {{...}} public

@@ -1,4 +1,4 @@
-module MinPrelude.Monoid where
+module Steroids.Monoid where
 
   record Monoid (M : Set) : Set where
     field

@@ -1,7 +1,7 @@
-open import MinPrelude.Monoid
-open import MinPrelude.Functor
+open import Steroids.Monoid
+open import Steroids.Functor
 
-module MinPrelude.Foldable where
+module Steroids.Foldable where
 
   record Foldable (F : Set → Set) : Set₁ where
     field
