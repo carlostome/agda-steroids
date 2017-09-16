@@ -132,8 +132,8 @@ module Steroids.Reflection where
   open Interface
 
   data TCCommand : Set where
-    UnifyC     : Term → Term → TCCommand
-    NormaliseC : Term → TCCommand
+    UnifyC      : Term → Term → TCCommand
+    NormaliseC  : Term → TCCommand
     NewMetaC    : Term → TCCommand
 
   TCResponse : TCCommand → Set
